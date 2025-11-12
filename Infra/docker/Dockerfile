@@ -10,11 +10,11 @@ RUN apt-get install -y curl
 RUN ls -la /build
 #Install confd
 RUN curl -s -L https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 -o /usr/local/bin/confd && chmod +x /usr/local/bin/confd
-RUN /usr/local/bin/confd -confdir /build/Infra/etcd/etc/confd -onetime -backend vault -node VAULT_ADDR -client-ca-keys /build/Infra/vault-cert/client-cert.pem -client-cert /build/Infra/vault-cert/cert.pem  -client-key /build/Infra/vault-cert/key.pem -auth-type token -auth-token VAULT_TOKEN
+#RUN /usr/local/bin/confd -confdir /build/Infra/etcd/etc/confd -onetime -backend vault -node VAULT_ADDR -client-ca-keys /build/Infra/vault-cert/client-cert.pem -client-cert /build/Infra/vault-cert/cert.pem  -client-key /build/Infra/vault-cert/key.pem -auth-type token -auth-token VAULT_TOKEN
 
-RUN openssl pkcs12 -export -out /build/cert/cc.pfx -inkey /build/cert/key.pem -in /build/cert/cert.pem -passout pass:p0lo9ki8
+#RUN openssl pkcs12 -export -out /build/cert/cc.pfx -inkey /build/cert/key.pem -in /build/cert/cert.pem -passout pass:p0lo9ki8
 # Put certificate into docker
-RUN ls -la /build/cert
+#RUN ls -la /build/cert
 
 #Build the code
 RUN ls -la
@@ -38,4 +38,5 @@ RUN chown -R javauser:javauser /app
 #USER javauser
 #Run the jar
 ENTRYPOINT ["java","-jar", "ms-java-flynas-worker1.0.0.jar"]
+
 
