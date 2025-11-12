@@ -1,0 +1,8 @@
+[template]
+src = "cert.tmpl"
+dest = "/build/cert/cert.pem"
+keys = [
+    "/ENVIRONMENT/common"
+]
+owner = "jenkins"
+mode = "0644"
