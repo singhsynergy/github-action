@@ -11,6 +11,6 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-docker-action@v4
       - name: Run Dockerfile
-        run: docker build --no-cache -f Infra/docker/Dockerfile -t  github-action:1
+        run: docker build --no-cache -f Infra/docker/Dockerfile -t  github-action:1 .
       - name: listing docker image
         run: docker images
