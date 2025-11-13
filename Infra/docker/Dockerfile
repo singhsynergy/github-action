@@ -24,7 +24,7 @@ RUN ls -la
 ##mvn -f /build/pom.xml clean package
 
 #RUN mvn -s /build/settings.xml -f /build/pom.xml clean package
-RUN ls -l  /build/target/
+#RUN ls -l  /build/target/
 #Package stage
 #FROM openjdk:17-ea-jdk-buster
 #COPY --from=build /build/target/ms-java-flynas-worker-1.0.0.jar /app/ms-java-flynas-worker1.0.0.jar
@@ -38,6 +38,7 @@ RUN ls -l  /build/target/
 #USER javauser
 #Run the jar
 #ENTRYPOINT ["java","-jar", "ms-java-flynas-worker1.0.0.jar"]
+
 
 
 
