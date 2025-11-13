@@ -19,25 +19,26 @@ RUN curl -s -L https://github.com/kelseyhightower/confd/releases/download/v0.16.
 #Build the code
 RUN ls -la
 ##RUN --mount=type=cache,mode=0777,target=/root/.m2,rw mvn  -f /build/pom.xml clean package
-RUN mkdir -p /root/.m2 && \
-    mvn -f /build/pom.xml clean package
+#RUN mkdir -p /root/.m2 && \
+#    mvn -f /build/pom.xml clean package
 ##mvn -f /build/pom.xml clean package
 
 #RUN mvn -s /build/settings.xml -f /build/pom.xml clean package
 RUN ls -l  /build/target/
 #Package stage
-FROM openjdk:17-ea-jdk-buster
-COPY --from=build /build/target/ms-java-flynas-worker-1.0.0.jar /app/ms-java-flynas-worker1.0.0.jar
-COPY --from=build /build/cert /app/cert
+#FROM openjdk:17-ea-jdk-buster
+#COPY --from=build /build/target/ms-java-flynas-worker-1.0.0.jar /app/ms-java-flynas-worker1.0.0.jar
+#COPY --from=build /build/cert /app/cert
 
 #Add user
-RUN groupadd -r javauser && useradd -g javauser javauser
-WORKDIR /app
-RUN ls -la
-RUN chown -R javauser:javauser /app
+#RUN groupadd -r javauser && useradd -g javauser javauser
+#WORKDIR /app
+#RUN ls -la
+#RUN chown -R javauser:javauser /app
 #USER javauser
 #Run the jar
-ENTRYPOINT ["java","-jar", "ms-java-flynas-worker1.0.0.jar"]
+#ENTRYPOINT ["java","-jar", "ms-java-flynas-worker1.0.0.jar"]
+
 
 
 
